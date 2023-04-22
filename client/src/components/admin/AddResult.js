@@ -52,11 +52,27 @@ function AddResult() {
 
  }
 
+ const gameStart = async(gameId) => {
+
+    let confirm = window.confirm("Sure game has started?")
+    if  (!confirm) return
+    axios.post(process.env.REACT_APP_START_GAME, {gameId} )
+    .then(res => {
+      if (!res.data){
+      
+        return alert("Error")
+       }
+  
+       else return alert("Game Started - No More Predictions Allowed")     
+        
+    })
+ }
+
  useEffect(()=>{
 
     //console.log(process.env)
     
-    axios.get(process.env.REACT_APP_GET_GAMES) 
+    axios.get(process.env.REACT_APP_GET_GAMES_TO_ADD_RESULTS) 
     .then(res => {
      if (!res.data){
       
@@ -99,6 +115,7 @@ function AddResult() {
             }}>
             <div>{el.homeTeam}  <input type="number" required onChange={updateHomeResult}/>  - <input type="number" required onChange={updateAwayResult}/> {el.awayTeam} </div>
             <button type="submit"> Add Result </button>
+            <button type="button" onClick={()=>{gameStart(el.gameId)}}>Start Game - No More Predictions Will Be Allowed</button>
             </form>
             
         )

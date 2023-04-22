@@ -26,6 +26,11 @@ const game = new mongoose.Schema({
 
     finished:{
         type:Boolean
+    },
+
+    started:{
+        type:Boolean,
+        default:false
     }
 
   

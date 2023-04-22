@@ -95,7 +95,8 @@ router.post('/addPrediction', async(request, response) => {
 
 router.get('/getGamesToPredict', async(request, response)=>{
     const games = await game.find({
-        result: null
+        result: null,
+        started:false
     })
 
     //console.log(games)

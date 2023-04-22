@@ -95,4 +95,30 @@ router.post('/checkWinners', async(request,response) => {
 
 })
 
+router.post('/gameStart', async(request,response) => {
+
+    const gameToStart = await game.findOne({
+        gameId: request.body.gameId
+    })
+
+    if (gameToStart){
+        gameToStart.started=true
+    }
+
+    gameToStart.save()
+
+    response.json(gameToStart)
+
+})
+
+router.get('/getGamesToAddResult', async(request, response)=>{
+    const games = await game.find({
+        result: null
+      
+    })
+
+    //console.log(games)
+    return response.json(games)
+})
+
 module.exports = router
