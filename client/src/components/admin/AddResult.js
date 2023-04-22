@@ -9,6 +9,7 @@ function AddResult() {
  const [awayResult, setAwayResult] = useState('')
 
 
+
  const updateHomeResult = (event) => {
     event.preventDefault()
     setHomeResult(event.target.value)
@@ -19,9 +20,10 @@ function AddResult() {
     setAwayResult(event.target.value)
   }
 
- const add = (gameId,home,away) =>{
+ const add = async (gameId,home,away) =>{
     let result = `${home}-${away}`
 
+    const delay = ms => new Promise(res => setTimeout(res, ms));//  used to delay before checkign winner
     
 
     axios.post(process.env.REACT_APP_SERVER_ADD_RESULT_URL, {gameId,result} )
@@ -34,11 +36,20 @@ function AddResult() {
   
        else {
         alert("Result added.")
-        window.confirm("")
-        return //window.reload()
+        //window.confirm("")
+        //return //window.reload()
        } 
         
-      })
+      })    
+      
+      await delay(2000);
+       
+      checkWinners(gameId)
+      window.location.reload()   
+
+     
+
+
  }
 
  useEffect(()=>{
@@ -57,6 +68,24 @@ function AddResult() {
     })
   },[])
 
+
+
+  const checkWinners = (gameId) =>{
+    axios.post(process.env.REACT_APP_SERVER_CHECK_WINNERS_URL, {gameId})
+    .then(res => {
+      if (!res.data){
+        window.confirm("Unsuccessful, please try again.")  
+
+      }
+
+      else {
+        return alert("Winners Checked")
+      }
+    })
+
+  }
+
+  
   if (!games) {
     return <div>No games to add results for.</div>
   }
@@ -64,7 +93,10 @@ function AddResult() {
  return (
     games.map((el)=>{
         return (
-            <form key={el.gameId} onSubmit={()=>{add(el.gameId,homeResult,awayResult)}}>
+            <form className='add-result' key={el.gameId} onSubmit={(event)=>{event.preventDefault()
+            add(el.gameId,homeResult,awayResult)            
+          
+            }}>
             <div>{el.homeTeam}  <input type="number" required onChange={updateHomeResult}/>  - <input type="number" required onChange={updateAwayResult}/> {el.awayTeam} </div>
             <button type="submit"> Add Result </button>
             </form>

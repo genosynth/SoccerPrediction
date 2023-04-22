@@ -1,7 +1,7 @@
 import axios from "axios"
 import React, {useState,useEffect} from 'react'
 
-function Result({el,userData}) {
+function Result({el}) {
 
     const [prediction,setPrediction] = useState("No Prediction")
     const [otherPred,setOtherPred] = useState("No Prediction")

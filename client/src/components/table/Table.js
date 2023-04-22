@@ -46,6 +46,10 @@ function Table() {
 
         
         temp.sort((a, b) => (a.points < b.points) ? 1 : -1) // to sort by descending order i.e top points first
+        
+        for (let i=0; i<temp.length; i++){ // to rank the users in the front end table
+            temp[i].place= i+1
+        }
 
         setPoints(temp)
       }, [users])
@@ -57,8 +61,8 @@ if (!users) {
 }
   return (
     points.map(user=>{
-        return <ol key={user.dateRegistered}>
-           {user.username} - {user.points} Points
+        return <ol key={user.username}>
+          {user.place} - {user.username} - {user.points} Points
         </ol>
     })
   )

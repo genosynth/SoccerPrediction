@@ -41,7 +41,7 @@ function AdminPage() {
        else {
         alert("Game added.")
         //window.confirm("")
-        return window.reload()
+        return 
        } 
         
       })
@@ -51,7 +51,7 @@ function AdminPage() {
 
 
   return (
-    <div>
+    <div className='admin-section'>
         <h1>Admin Page</h1>
         <h2>Add Game</h2>
         <form  onSubmit={()=>{create(homeTeam,awayTeam)}}>
@@ -59,9 +59,10 @@ function AdminPage() {
             <button type="submit"> Add Game </button>
         </form>
 
-        <h1>Add Results</h1>
-        <AddResult></AddResult>
-       
+        <div className='add-result'>
+          <h1>Add Results</h1>
+          <AddResult></AddResult>
+        </div>
         
 
     </div>

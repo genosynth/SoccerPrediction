@@ -37,13 +37,16 @@ function LogIn() {
       //console.log(res);
       //console.log(res.data);
       window.location.href = "/"
+    
       
     })
+
+    
 }
   
 
   return (
-    <div>
+    <div className='login'>
     <h1>Log In</h1>
     <form onSubmit={log}>
       <label>Username</label>

@@ -25,9 +25,9 @@ function Predictions({results}) {
   
 
 
-  if (!predictions) 
+  if (!predictions || predictions.length===0) 
   return (
-      <>No Pending Predictions.</>
+      <>No Pending Predictions</>
   )
   return (
     predictions.map((el)=>{

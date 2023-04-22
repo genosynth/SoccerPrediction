@@ -92,7 +92,7 @@ function Games({userData}) {
           for (let i=0; i<userGameData.length; i++){
   
             if (game.gameId==userGameData[i].gameId){
-              console.log(game.gameId)
+              //console.log(game.gameId)
               
               return 
             }
@@ -113,12 +113,17 @@ function Games({userData}) {
     },[])
 
     
-   
+
+    
+  
+    if (!games || games.length===0){
+      return "No Games To Predict"
+    }
 
   return (
     games.map((el)=>{
         return (
-            <form key={el.gameId} onSubmit={(event)=>{event.preventDefault(); predict(el.gameId)}}>
+            <form className="predict" key={el.gameId} onSubmit={(event)=>{event.preventDefault(); predict(el.gameId)}}>
             <div>{el.homeTeam}  <input type="number" required onChange={updateHomePrediction}/>  - <input type="number" required onChange={updateAwayPrediction}/> {el.awayTeam} </div>
             <button type="submit"> Save </button>
             </form>

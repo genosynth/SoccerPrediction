@@ -40,7 +40,7 @@ function Register() {
 }
 
   return (
-    <div>
+    <div className='register'>
         <h1>Register</h1>
         <form onSubmit={registration}>
           <label>Username</label>

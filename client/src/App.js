@@ -35,7 +35,8 @@ function App() {
   if (token.admin){ //admin page available to create games and publish results
     return  (
       <div className="App">     
-      <span><a href="/admin">Admin Page</a></span> 
+      <span><a href="/">Home Page</a></span> - 
+      <span><a href="/admin"> Admin Page</a> </span>
       <Router basename="/">
         <Routes>
           <Route path="/"  element={<Profile></Profile>}/>    

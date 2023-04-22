@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import Result from './Result'
 
 
-function Results({results,userData}) {
+function Results({results}) {
 
 
 
@@ -13,7 +13,7 @@ function Results({results,userData}) {
        
             return (
 
-                <Result key={el.gameId} el={el} userData={userData}></Result>
+                <Result key={el.gameId} el={el} ></Result>
                 
             )
         })

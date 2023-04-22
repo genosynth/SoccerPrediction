@@ -1,8 +1,77 @@
 .App {
   text-align: center;
+
 }
 
-section {
-  background-color: black;
-  color: antiquewhite;
+a {
+  text-decoration: none;
+  color: antiquewhite
 }
+
+a:hover {
+  color: white;
+}
+
+
+section {
+  
+  color: antiquewhite;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border:  white solid 1px;
+  border-radius: 5px;
+  padding: 1%;
+
+
+}
+
+
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.admin-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.add-result {
+  width: 600px;
+  
+}
+
+.predict {
+  color: black;
+}
+
+form {
+  
+  width: 620px;
+  box-shadow: rgba(243, 243, 243, 0.925) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background-color: white; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+ 
+  
+}
+

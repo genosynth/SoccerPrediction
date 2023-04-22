@@ -54,7 +54,9 @@ router.post('/checkWinners', async(request,response) => {
     allUsers.forEach((user)=>{
       
         const found = user.predictions.find(element => element.gameId === request.body.gameId);
+
         if (found){
+          
             if (found.prediction===gameToCheck.result){
                 found.predictedScore=true
                 found.predicted=true
@@ -62,8 +64,9 @@ router.post('/checkWinners', async(request,response) => {
                 found.predictedScore=false
                 let x = eval(gameToCheck.result) //here we are converting the score 1-1 for example to become 0 number so we can compare 
                 let y = eval(found.prediction)
-                console.log(x)
-                console.log(y)
+                console.log(gameToCheck.result)
+                console.log(gameToCheck.homeTeam+" - "+ gameToCheck.awayTeam+ " - "+ x)
+                console.log(found.homeTeam+" - "+ found.awayTeam+ " - "+ y)
                 if (x==y){
                      found.predicted=true
                 }
@@ -74,6 +77,7 @@ router.post('/checkWinners', async(request,response) => {
                      found.predicted=true
                 }
 
+              
                 if (x>y || x<y) { 
                      //found.predicted=false
                 }

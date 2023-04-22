@@ -9,7 +9,6 @@ function Profile() {
 
   
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("soccer")))
-
   const [results, setResults] = useState([])
  
  
@@ -44,14 +43,15 @@ function Profile() {
      }
 
      else {
-     localStorage.setItem("soccer-user",JSON.stringify(res.data.predictions))
-     console.log(res.data)
-     return setUserData(res.data)      
+      localStorage.setItem("soccer-user",JSON.stringify(res.data.predictions))
+      console.log(res.data)
+      return setUserData(res.data)      
+     
      }
     })
   },[])
 
-  
+
 
   
 
@@ -67,7 +67,7 @@ function Profile() {
           <h2>Predictions</h2>          
           <Predictions results={results}></Predictions>
           <h2>Results</h2>
-          <Results results={results} userData={userData}></Results>
+          <Results results={results} ></Results>
         </section>
 
         <section>
